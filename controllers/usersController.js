@@ -15,7 +15,7 @@ async function usersCreateGet(req, res) {
 
 async function usersCreatePost(req, res) {
   console.log('username to be saved: ', req.body.username)
-  const username = req.body.userName
+  const { username } = req.body
   await db.insertUsername(username)
   res.redirect('/')
 }
