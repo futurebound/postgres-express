@@ -8,7 +8,7 @@ const db = require('../db/queries')
 // }
 
 async function usersListGet(req, res) {
-  const { search } = req.query
+  const { search } = req.query // grab `search` query param if used
   let usernames
 
   if (search) {
@@ -34,8 +34,16 @@ async function usersCreatePost(req, res) {
   res.redirect('/')
 }
 
+async function usersDeleteGet(req, res) {
+  console.log('deleting all usernames...')
+  await db.deleteAllUsernames()
+  console.log('deleted.')
+  res.redirect('/')
+}
+
 module.exports = {
   usersListGet,
   usersCreateGet,
   usersCreatePost,
+  usersDeleteGet,
 }
