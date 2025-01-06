@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="/create" method="POST">
+      <section>
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username" required />
+      </section>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
