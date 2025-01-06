@@ -7,4 +7,6 @@ usersRouter.get('/', usersController.usersListGet)
 usersRouter.get('/create', usersController.usersCreateGet)
 usersRouter.post('/create', usersController.usersCreatePost)
 
+// usersRouter.get('/search')
+
 module.exports = usersRouter
