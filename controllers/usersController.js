@@ -1,13 +1,27 @@
-exports.usersListGet = (req, res) => {
-  console.log('usernames will be logged here - wip')
+const db = require('../db/queries')
+
+async function usersListGet(req, res) {
+  // console.log('usernames will be logged here - wip')
+  const usernames = await db.getAllUsernames()
+  console.log('Usernames: ', usernames)
+  res.send('Usernames: ' + usernames.map((user) => user.username).join(', '))
 }
 
-exports.usersCreateGet = (req, res) => {
+async function usersCreateGet(req, res) {
   res.render('createUser', {
     title: 'Create New User',
   })
 }
 
-exports.usersCreatePost = (req, res) => {
+async function usersCreatePost(req, res) {
   console.log('username to be saved: ', req.body.username)
+  const username = req.body.userName
+  await db.insertUsername(username)
+  res.redirect('/')
+}
+
+module.exports = {
+  usersListGet,
+  usersCreateGet,
+  usersCreatePost,
 }
